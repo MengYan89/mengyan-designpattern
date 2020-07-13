@@ -1,19 +1,19 @@
 # 抽象工厂模式
-[返回首页](../../../../../)
+[返回首页](../../../../../README.md)
 - [文件结构](#文件结构)
 - [目的](#目的)  
 - [例子](#例子)  
 - [Java代码示例](#Java代码示例)  
-    * [库房(抽象工厂)](#库房(抽象工厂))
-    * [戴尔库房(具体工厂)](#戴尔库房(具体工厂))
-    * [华为库房(具体工厂)](#华为库房(具体工厂))
-    * [充电器(抽象产品)](#充电器(抽象产品))
-    * [笔记本(抽象产品)](#笔记本(抽象产品))
-    * [戴尔笔记本(具体产品)](#戴尔笔记本(具体产品))
-    * [华为笔记本(具体产品)](#华为笔记本(具体产品))
-    * [华为充电器(具体产品)](#华为充电器(具体产品))
-    * [戴尔充电器(具体产品)](#戴尔充电器(具体产品))
-    * [Client](#Client(理论上仅由抽象产品与抽象工厂实现))
+    * [库房(抽象工厂)](#库房)
+    * [戴尔库房(具体工厂)](#戴尔库房)
+    * [华为库房(具体工厂)](#华为库房)
+    * [充电器(抽象产品)](#充电器)
+    * [笔记本(抽象产品)](#笔记本)
+    * [戴尔笔记本(具体产品)](#戴尔笔记本)
+    * [华为笔记本(具体产品)](#华为笔记本)
+    * [华为充电器(具体产品)](#华为充电器)
+    * [戴尔充电器(具体产品)](#戴尔充电器)
+    * [Client](#Client)
 - [Java源码中抽象工厂模式的案例](#Java源码中抽象工厂模式的案例)
     * [Connection](#Connection)
     * [Statement](#Statement)
@@ -45,7 +45,8 @@
 ![csdnImg](img/AbstractFactoryCsdn.png)  
 # Java代码示例  
 下面用Java代码实现以上例子。  
-## 库房(抽象工厂)
+## 库房
+抽象工厂
 ```java
 /**
  * 库房(抽象工厂)
@@ -57,7 +58,8 @@ public abstract class StorageFactory {
     public abstract NoteBook createNoteBook();
 }
 ```
-## 戴尔库房(具体工厂)
+## 戴尔库房
+具体工厂
 ```java
 /**
  * 戴尔库房(具体工厂)
@@ -79,7 +81,8 @@ public class DellStorageFactory extends StorageFactory {
     }
 }
 ```
-## 华为库房(具体工厂)
+## 华为库房
+具体工厂
 ```java
 /**
  * 华为库房(具体工厂)
@@ -101,7 +104,8 @@ public class HuaWeiStorageFactory extends StorageFactory {
     }
 }
 ```
-## 充电器(抽象产品)
+## 充电器
+抽象产品
 ```java
 /**
  * 充电器(抽象产品)
@@ -110,7 +114,8 @@ public interface Charger {
     void getCharger();
 }
 ```
-## 笔记本(抽象产品)
+## 笔记本
+抽象产品
 ```java
 /**
  * 笔记本(抽象产品)
@@ -119,7 +124,8 @@ public interface NoteBook {
     void getNoteBook();
 }
 ```
-## 戴尔笔记本(具体产品)
+## 戴尔笔记本
+具体产品
 ```java
 /**
  * Dell笔记本(具体产品)
@@ -130,7 +136,8 @@ public class DellNoteBook implements NoteBook{
     }
 }
 ```
-## 华为笔记本(具体产品)
+## 华为笔记本
+具体产品
 ```java
 /**
  * 华为笔记本(具体产品)
@@ -141,7 +148,8 @@ public class HuaWeiNoteBook implements NoteBook {
     }
 }
 ```
-## 华为充电器(具体产品)
+## 华为充电器
+具体产品
 ```java
 /**
  * 华为充电器(具体产品)
@@ -152,7 +160,8 @@ public class HuaWeiCharger implements Charger {
     }
 }
 ```
-## 戴尔充电器(具体产品)
+## 戴尔充电器
+具体产品
 ```java
 /**
  * Dell充电器(具体产品)
@@ -163,7 +172,8 @@ public class DellCharger implements Charger {
     }
 }
 ```
-## Client(理论上仅由抽象产品与抽象工厂实现)
+## Client
+理论上仅由抽象产品与抽象工厂实现
 ```java
 public class Client {
     /**

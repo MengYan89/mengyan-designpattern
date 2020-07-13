@@ -1,4 +1,4 @@
-#抽象工厂模式
+# 抽象工厂模式
 - [文件结构](#文件结构)
 - [目的](#目的)  
 - [例子](#例子)  
@@ -20,7 +20,7 @@
     * [CallableStatement](##CallableStatement)
     * [JDBC抽象工厂UML图](##JDBC抽象工厂UML图)
 - [Spring源码中抽象工厂模式的案例](#Spring源码中抽象工厂模式的案例)
-#文件结构
+# 文件结构
 ├─csdn(文章中的源码)  
 │  ├─factory  
 │  └─product  
@@ -31,9 +31,9 @@
 └─improvement(书中原始例子改良)  
 │  ├─factory  
 │  └─product  
-#目的  
+# 目的  
 提供一个创建一系列相关或互相依赖对象的接口，而无需指定他们具体的类  
-#例子  
+# 例子  
 你是一个笔记本商家，现在在出售华为与戴尔笔记本电脑(假设每种品牌只有一种产品)每个商品由充电器与笔记本本体组成，你有华为库房与戴尔库房分别存放这些商品每卖出一个产品只需要去对应库房拿出充电器和笔记本就可以了，不需要在意实际品牌。  
 在上面这个例子中    
 1.华为库房与戴尔库房是具体工厂  
@@ -42,9 +42,9 @@
 4.充电器与笔记本是抽象产品  
 关系如下  
 ![csdnImg](img/AbstractFactoryCsdn.png)  
-#Java代码示例  
+# Java代码示例  
 下面用Java代码实现以上例子。  
-##库房(抽象工厂)
+## 库房(抽象工厂)
 ```java
 /**
  * 库房(抽象工厂)
@@ -56,7 +56,7 @@ public abstract class StorageFactory {
     public abstract NoteBook createNoteBook();
 }
 ```
-##戴尔库房(具体工厂)
+## 戴尔库房(具体工厂)
 ```java
 /**
  * 戴尔库房(具体工厂)
@@ -78,7 +78,7 @@ public class DellStorageFactory extends StorageFactory {
     }
 }
 ```
-##华为库房(具体工厂)
+## 华为库房(具体工厂)
 ```java
 /**
  * 华为库房(具体工厂)
@@ -100,7 +100,7 @@ public class HuaWeiStorageFactory extends StorageFactory {
     }
 }
 ```
-##充电器(抽象产品)
+## 充电器(抽象产品)
 ```java
 /**
  * 充电器(抽象产品)
@@ -109,7 +109,7 @@ public interface Charger {
     void getCharger();
 }
 ```
-##笔记本(抽象产品)
+## 笔记本(抽象产品)
 ```java
 /**
  * 笔记本(抽象产品)
@@ -118,7 +118,7 @@ public interface NoteBook {
     void getNoteBook();
 }
 ```
-##戴尔笔记本(具体产品)
+## 戴尔笔记本(具体产品)
 ```java
 /**
  * Dell笔记本(具体产品)
@@ -129,7 +129,7 @@ public class DellNoteBook implements NoteBook{
     }
 }
 ```
-##华为笔记本(具体产品)
+## 华为笔记本(具体产品)
 ```java
 /**
  * 华为笔记本(具体产品)
@@ -140,7 +140,7 @@ public class HuaWeiNoteBook implements NoteBook {
     }
 }
 ```
-##华为充电器(具体产品)
+## 华为充电器(具体产品)
 ```java
 /**
  * 华为充电器(具体产品)
@@ -151,7 +151,7 @@ public class HuaWeiCharger implements Charger {
     }
 }
 ```
-##戴尔充电器(具体产品)
+## 戴尔充电器(具体产品)
 ```java
 /**
  * Dell充电器(具体产品)
@@ -162,7 +162,7 @@ public class DellCharger implements Charger {
     }
 }
 ```
-##Client(理论上仅由抽象产品与抽象工厂实现)
+## Client(理论上仅由抽象产品与抽象工厂实现)
 ```java
 public class Client {
     /**
@@ -180,7 +180,7 @@ public class Client {
     }
 }
 ```
-#Java源码中抽象工厂模式的案例
+# Java源码中抽象工厂模式的案例
 通过上面的例子我们已经简单的了解了抽象工厂模式，下面简单介绍一下抽象工厂模式在java源码中与Spring中的应用 
 以下案例代码为了凸显设计模式都进行了一定程度的简化  
 **java.sql.Connection**  
@@ -200,20 +200,20 @@ public interface Connection {
 每次操作数据库只需要使用java提供的这套接口就可以进行jdbc操作而不需要考虑我们使用的是
 什么数据库(在不考虑特殊SQL语法的情况下)  
 这些接口均由对应的数据库驱动实现,下面用MySQL与Oracle的驱动进行举例  
-##Connection  
+## Connection  
 java.sql.Connection的部分实现如图  
 ![ConnectionImg](img/jdbc-Connection.png)  
-##Statement  
+## Statement  
 java.sql.Statement的部分实现如图  
 ![StatementImg](img/jdbc-Statement.png)  
-##PreparedStatement  
+## PreparedStatement  
 java.sql.PreparedStatement的部分实现如图  
 ![PreparedStatementImg](img/jdbc-PreparedStatement.png)  
-##CallableStatement  
+## CallableStatement  
 java.sql.CallableStatement的部分实现如图  
 ![CallableStatementImg](img/jdbc-CallableStatemt.png)  
-##JDBC抽象工厂UML图  
+## JDBC抽象工厂UML图  
 将上面的继承关系简化画成一个完整的抽象工厂UML图应该是这样的
 ![AbstractFactory](img/jdbc-AbstractFactory.png)  
-#Spring源码中抽象工厂模式的案例
+# Spring源码中抽象工厂模式的案例
 待后续更新。

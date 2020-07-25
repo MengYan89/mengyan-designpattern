@@ -15,8 +15,8 @@ public class Maze {
         roomHash.put(r.getRoomNumber(), r);
     }
 
-    public Room roomNo(int index) {
-        return null;
+    public Room roomNo(int no) {
+        return roomHash.get(no);
     }
 
     @Override

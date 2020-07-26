@@ -137,3 +137,42 @@ Director：ComputerDirector
 Builder：ComputerBuilder  
 ConcreteBuilder：MacComputerBuilder,WindowsComputerBuilder  
 Product：Computer  
+# Java源码中生成器模式的案例
+简单了解了Builder模式之后，让我们看一下Java源码中Builder的使用，为了凸显设计模式，在其他方面都进行了简化。  
+**java.lang.Appendable**  
+## 源码中Builder的类图  
+![java-builder](img/builder-java-builder.png)  
+就像之前所说的Builders中的就已经是一个Builder模式了。  
+Builder：Appendable为创建一个对象有各种添加字符的抽象接口。  
+ConcreteBuilder：AbstractStringBuilder,Writer实现Appendable接口以构造和装配各个部件。提供一个检索产品的接口(toString与flush)。  
+Product：AbstractStringBuilder是生成一个字符串,Writer是将添加至缓存的字符刷新,OutPutStreamWriter中的实现是将字符刷新至本地文件。  
+可以看到在上面的图里并没有之前图里的Director去使用Appendable，那么我们就自己写一个:  
+```java
+public class Director {
+    public Appendable create(Appendable builder) throws IOException {
+        builder.append("hello");
+        builder.append(" ");
+        builder.append("word");
+        builder.append("123",0,1);
+        return builder;
+    }
+}
+```
+使用Builder生成对象:  
+```java
+public class Test {
+    public static void main(String[] args) throws IOException {
+        Director director = new Director();
+        // 使用StringBuilder构建一个字符串
+        StringBuilder builder = (StringBuilder) director.create(new StringBuilder());
+        // 获得产品字符串
+        String str = builder.toString();
+        // 使用OutputStreamWriter向文件中构建字符串
+        OutputStreamWriter writer= (OutputStreamWriter)director.create(
+                new OutputStreamWriter(new FileOutputStream("E:\\jt\\jt-808-protocol\\mengyan-web-test\\src\\main\\java\\com\\mengyan\\appendable\\test.txt"))
+        );
+        // 将缓存中的字符串存入文件
+        writer.flush();
+    }
+}
+```

@@ -1,4 +1,18 @@
 # 生成器(Builder、建造者)
+[返回首页](../../../../../README.md)
+- [目的](#目的)  
+- [类图](#类图)  
+- [例子](#例子)  
+- [Builder代码示例](#Builder代码示例)  
+    * [ComputerBuilder](#ComputerBuilder)  
+    * [ComputerDirector](#ComputerDirector)  
+    * [MacComputerBuilder](#MacComputerBuilder)  
+    * [WindowsComputerBuilder](#WindowsComputerBuilder)  
+    * [Java示例的类图](#Java示例的类图)  
+- [Java源码中生成器模式的案例](#Java源码中生成器模式的案例)  
+    * [源码中Builder的类图](#源码中Builder的类图)
+    
+    
 # 目的
 将一个复杂对象的构建与他的表示分离，使得同样的构建过程可以创建不同的表示。  
 将复杂的内部创建封装在内部，对于外部调用的人来说，只需要传入建造者和建造工具，对于内部是如何建造成成品的，调用者无需关心。  
